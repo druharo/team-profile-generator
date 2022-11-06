@@ -19,5 +19,4 @@ describe("intern", () => {
             expect(intern.getRole()).toEqual("Intern");
         });
     });
-
 })
