@@ -1,4 +1,4 @@
-const Engineer = require('../src/Engineer')
+const Engineer = require('../lib/Engineer')
 const engineer = new Engineer(1, "ruharo", "druharo")
 
 engineer.github = "druharo"

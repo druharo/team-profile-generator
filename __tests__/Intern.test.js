@@ -1,4 +1,4 @@
-const Intern = require('../src/Intern')
+const Intern = require('../lib/Intern')
 const intern = new Intern(1, "ruharo", "druharo")
 
 intern.school = "ntare"
