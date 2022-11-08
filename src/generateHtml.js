@@ -22,7 +22,7 @@ function renderBody(data) {
         <h6 class="card-subtitle mb-2 text-muted">${data.roles[i].role}</h6>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">ID: ${data.roles[i].id}</li >
-          <li class="list-group-item"><a href="mailto://${data.roles[i].email}">${data.roles[i].email}</a></li>
+          <li class="list-group-item">Email: <a href="mailto://${data.roles[i].email}">${data.roles[i].email}</a></li>
           <li class="list-group-item">OfficeNumber: ${data.roles[i].officeNumber}</li>
           <li class="list-group-item">School: ${data.roles[i].school}</li>
           <li class="list-group-item">Github: <a href="https://github.com/${data.roles[i].gitHubUserName}">${data.roles[i].gitHubUserName}</a</li>
