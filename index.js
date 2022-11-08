@@ -11,7 +11,7 @@ const prompts = [
         type: 'list',
         message: 'What role profile do you want to enter?',
         name: 'role',
-        choices: ["Employee","Manager", "Engineer", "Intern"] 
+        choices: ["Employee", "Manager", "Engineer", "Intern"]
     },
     {
         type: 'input',
@@ -32,7 +32,7 @@ const prompts = [
         type: 'number',
         message: 'What is the office number?',
         name: 'officeNumber',
-        when: function(answers){
+        when: function (answers) {
             if (answers.role == "Manager") {
                 return true
             }
@@ -43,19 +43,18 @@ const prompts = [
         type: 'input',
         message: 'What is your gitHub userName?',
         name: 'gitHubUserName',
-        when: function(answers){
+        when: function (answers) {
             if (answers.role == "Engineer") {
                 return true
             }
             return false
         }
     },
-
     {
         type: 'input',
         message: 'What school did you go to?',
         name: 'school',
-        when: function(answers){
+        when: function (answers) {
             if (answers.role == "Intern") {
                 return true
             }
@@ -66,21 +65,20 @@ const prompts = [
 // function for write to file
 function writeToFile(fileName, data) {
     let html = generateHtml(data);
-    fs.writeFile(fileName, md, (err) => {
+    fs.writeFile(fileName, html, (err) => {
         if (err) throw err;
     });
 }
-// Function to initialize app
+// Function to loop questions
 function init() {
     inquirer.prompt({
         type: 'recursive',
         message: "Enter a new role",
         name: "roles",
         prompts: prompts,
-      })
+    })
         .then((answers) => {
-            //writeToFile("Html", answers)
-
+            writeToFile("dist/index.html", answers)
         })
         .catch((error) => {
             if (error.isTtyError) {
@@ -88,8 +86,5 @@ function init() {
             }
         });
 }
-
 // Function call to initialize app
 init();
-
-
