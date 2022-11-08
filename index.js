@@ -1,75 +1,69 @@
+// imports/modules to be used
 const generateHtml = require("./src/generateHtml");
 const inquirer = require("inquirer");
 const fs = require('fs');
 const { exit } = require("process");
+inquirer.registerPrompt('recursive', require('inquirer-recursive'));
 
-//  Array of questions for user input in Node
-const roleQuestion = [
+//  Array of questions
+const prompts = [
     {
         type: 'list',
         message: 'What role profile do you want to enter?',
         name: 'role',
-        choices: ["Manager", "Engineer", "Intern", "Employee", "NONE"]
+        choices: ["Employee","Manager", "Engineer", "Intern"] 
     },
-]
-const managerQuestions = [
-    {
-        type: 'number',
-        message: 'What is your office number?',
-        name: 'officeNumber',
-    },
-]
-const employeeQuestions = [
     {
         type: 'input',
-        message: 'What is your name?',
+        message: 'What is the name?',
         name: 'name',
     },
     {
         type: 'number',
-        message: 'What is your Id?',
+        message: 'What is the Id?',
         name: 'id',
     },
     {
         type: 'input',
-        message: 'What is your Email?',
+        message: 'What is the Email?',
         name: 'email',
     },
-]
-const engineerQuestions = [
+    {
+        type: 'number',
+        message: 'What is the office number?',
+        name: 'officeNumber',
+        when: function(answers){
+            if (answers.role == "Manager") {
+                return true
+            }
+            return false
+        }
+    },
     {
         type: 'input',
         message: 'What is your gitHub userName?',
         name: 'gitHubUserName',
+        when: function(answers){
+            if (answers.role == "Engineer") {
+                return true
+            }
+            return false
+        }
     },
-]
-const internQuestions = [
+
     {
         type: 'input',
         message: 'What school did you go to?',
         name: 'school',
+        when: function(answers){
+            if (answers.role == "Intern") {
+                return true
+            }
+            return false
+        }
     },
 ]
-
-
-// Function to write README file
-function getManagerData() {
-
-    inquirer.prompt(employeeQuestions.concat(managerQuestions))
-
-}
-function getEmployeeData() {
-
-    inquirer.prompt(employeeQuestions)
-}
-function getInternData() {
-
-    inquirer.prompt(employeeQuestions.concat(internQuestions))
-}
-function getEngineerData() {
-
-    inquirer.prompt(employeeQuestions.concat(engineerQuestions))
-}
+// function for write to file
 function writeToFile(fileName, data) {
     let html = generateHtml(data);
     fs.writeFile(fileName, md, (err) => {
@@ -78,25 +72,15 @@ function writeToFile(fileName, data) {
 }
 // Function to initialize app
 function init() {
-    inquirer.prompt(roleQuestion)
+    inquirer.prompt({
+        type: 'recursive',
+        message: "Enter a new role",
+        name: "roles",
+        prompts: prompts,
+      })
         .then((answers) => {
-            if (answers.role == "Manager") {
-                data = getManagerData()
-            }
-            if (answers.role == "Employee") {
-                data = getEmployeeData()
-            }
-            if (answers.role == "Intern") {
-                data = getInternData()
-            }
-            if (answers.role == "Engineer") {
-                data = getEngineerData()
-            }
+            //writeToFile("Html", answers)
 
-            if (answers.role == "NONE") {
-                exit
-            }
-            writeToFile("Html", data)
         })
         .catch((error) => {
             if (error.isTtyError) {
