@@ -7,6 +7,7 @@ TEAM Profile Generator app for challenge 10
 a) ![image info](./utils/Readmescreenshot.png)
 b) link to github pages (https://github.com/druharo/readme-generator)
 c) Link to the live site (https://druharo.github.io/readme-generator/)
+d) Link to walkthrough video ()
 
 2. Key changes were made and pushed to github repository. initial  commit, generating prompts and questions, generateHtml.js, tests files and employee classes with prompts, updating the URLs (GitHub, Site and Video links) and creation of page in Github.
 
