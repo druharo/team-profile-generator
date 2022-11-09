@@ -1,11 +1,13 @@
 section {
 font-size: 9rem;
+color: black;
 background-color: brown;
 text-align: center;
 font-family:Arial, Helvetica, sans-serif
 }
 .card-title {
 font-size: 4rem;
+color: black;
 background-color: cadetblue;
 }
 .card-subtitle {
