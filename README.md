@@ -4,10 +4,10 @@ TEAM Profile Generator app for challenge 10
 ## INSTALLATION AND UPDATES MADE:
 1. The page was built using mainly nodejs. Deployed using Github pages and is hostested on Github. Link , screenshot and the screen shot are attached herewith.
 
-a) ![image info](./utils/teamimage.png)
+a) ![image info](./utils/teamProfileImage.png)
 b) link to github pages (https://github.com/druharo/team-profile-generator)
 c) Link to the live site (https://druharo.github.io/team-profile-generator/)
-d) Link to walkthrough video ()
+d) Link to walkthrough video (https://watch.screencastify.com/v/WINAQg7WCsD7PJsc681V)
 
 2. Key changes were made and pushed to github repository. initial  commit, generating prompts and questions, generateHtml.js, tests files and employee classes with prompts, updating the URLs (GitHub, Site and Video links) and creation of page in Github.
 
@@ -21,3 +21,4 @@ The code has an MIT License.
 
 ## CREDITS:
 UMN Bootcamp Tutoring Staff, https://www.npmjs.com/package/inquirer/v/8.2.4, https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes, https://jestjs.io, https://nodejs.org/dist/latest-v16.x/docs/api/fs.html#fswritefilefile-data-options-callback.
+https://github.com/nathanloisel/inquirer-recursive#readme
